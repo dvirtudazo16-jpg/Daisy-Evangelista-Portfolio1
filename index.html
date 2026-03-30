@@ -184,13 +184,8 @@
     transform: translateX(0);
   }
 }
-    @media(max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
 
-      .hero {
+          .hero {
   position: relative;
 }
       .hero img {
@@ -223,23 +218,15 @@
   to {
     transform: translate(-40px, 40px);
       }
+    
+    @media(max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
      }
   </style>
 </head>
-
-<script>
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-
-    if (sectionTop < window.innerHeight - 100) {
-      section.classList.add("show");
-    }
-  });
-});
-</script>
   
 <body>
 
@@ -266,7 +253,6 @@ window.addEventListener("scroll", () => {
     </div>
   </div>
 
-  <!-- Replace with your actual image -->
   <img src="profile.jpg" alt="Daisy">
 </section>
 
@@ -326,5 +312,18 @@ window.addEventListener("scroll", () => {
   © 2026 Daisy Evangelista. All rights reserved.
 </footer>
 
+  <script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < window.innerHeight - 100) {
+      section.classList.add("show");
+    }
+  });
+});
+</script>
 </body>
 </html>
