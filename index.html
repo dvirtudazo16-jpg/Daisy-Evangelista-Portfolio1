@@ -23,6 +23,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 8%;
+      animation: fadeIn 1s ease-in;
     }
 
     nav a {
@@ -30,8 +31,12 @@
       text-decoration: none;
       color: white;
       font-size: 14px;
+      transition: 0.3s;
     }
 
+    nav a:hover {
+  color: #d4af37;
+}
     .btn {
       padding: 10px 20px;
       background: #d4af37;
@@ -40,8 +45,13 @@
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
+      transition: all 0.3s ease;
     }
 
+    .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
     .hero {
       display: flex;
       align-items: center;
@@ -52,6 +62,7 @@
 
     .hero-text {
       max-width: 500px;
+      animation: slideUp 1s ease forwards;
     }
 
     .hero-text h1 {
@@ -75,16 +86,24 @@
     }
 
     .hero img {
-      width: 380px;
+      width: 320px;
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: slideRight 1.2s ease;
     }
 
     section {
       padding: 60px 8%;
       text-align: center;
+       opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
     }
 
+    section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -139,6 +158,32 @@
       opacity: 0.7;
     }
 
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
     @media(max-width: 768px) {
       .hero {
         flex-direction: column;
@@ -161,10 +206,10 @@
   width: 350px;
   height: 350px;
   background: #d4af37;
-  filter: blur(70px);
-  opacity: 0.5;
+  filter: blur(60px);
+  opacity: 0.6;
   z-index: 1;
-  animation: glowMove 6s ease-in-out infinite alternate;
+  animation: glowMove 5s ease-in-out infinite alternate;
  }
 
       .hero {
@@ -176,12 +221,26 @@
     transform: translate(0, 0);
   }
   to {
-    transform: translate(-20px, 20px);
+    transform: translate(-40px, 40px);
       }
      }
   </style>
 </head>
 
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < window.innerHeight - 100) {
+      section.classList.add("show");
+    }
+  });
+});
+</script>
+  
 <body>
 
 <header>
